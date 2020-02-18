@@ -1,4 +1,42 @@
 <hello name="{{ name }}"></hello>
 <p>
-  Start editing to see some magic happen :)
+	Start editing to see some magic happen :)
 </p>
+<a routerLink="./add-employee"> add employee</a>
+<router-outlet></router-outlet> 
+<table>
+	<th>
+		Name
+	</th>
+	<th>
+		salary
+	</th>
+	<th>
+		age
+	</th>
+	<th>
+		update
+	</th>
+	<th>
+		delete
+	</th>
+	<tr *ngFor="let item of employyes">
+		<td>
+			{{item.employee_name}}
+		</td>
+		<td>
+			{{item.employee_salary}}
+		</td>
+		<td>
+			{{item.employee_age}}
+		</td>
+		<td>
+			<button (click)="update(item.id,item)">Update</button>
+		</td>
+		<td>
+			<button (click)="delete(item.id)">Delete</button>
+		</td>
+	</tr>
+</table>
+
+<app-edit *ngIf="updating" [selected]="selected"></app-edit>
